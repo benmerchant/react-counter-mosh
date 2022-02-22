@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: [],
+    value: this.props.value,
+    // tags: [],
   };
 
   // renderTags() {
@@ -17,40 +17,35 @@ class Counter extends Component {
   //   );
   // }
 
-  constructor() {
-    super();
-    this.handleIncrement = this.handleIncrement.bind(this);
-  }
-
-  handleIncrement() {
-    console.log('Increment Clicked', this.state.count);
-  }
+  handleIncrement = () => {
+    this.setState({ value: this.state.value + 1 });
+  };
 
   render() {
     return (
-      <React.Fragment>
+      <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.handleIncrement()}
           className='btn btn-secondary btn-sm'
         >
           Increment
         </button>
         {/* {this.state.tags.length === 0 && 'Please create a new tag!'}
         {this.renderTags()} */}
-      </React.Fragment>
+      </div>
     );
   }
 
   getBadgeClasses() {
     let classes = 'badge m-2 bg-';
-    classes += this.state.count === 0 ? 'danger' : 'primary';
+    classes += this.state.value === 0 ? 'danger' : 'primary';
     return classes;
   }
 
   formatCount() {
-    const { count } = this.state;
-    return count === 0 ? 'Zero' : count;
+    const { value } = this.state;
+    return value === 0 ? 'Zero' : value;
   }
 }
 
