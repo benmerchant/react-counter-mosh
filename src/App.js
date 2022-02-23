@@ -17,6 +17,17 @@ class App extends Component {
     ],
   };
 
+  constructor() {
+    super();
+    console.log('App - MOUNT - constructor()');
+  }
+
+  componentDidMount() {
+    console.log('App - MOUNT - componentDidMount()');
+    // AJAX call
+    // this.setState({ data })
+  }
+
   handleReset = () => {
     const counters = this.state.counters.map((c) => {
       c.value = 0;
@@ -38,6 +49,7 @@ class App extends Component {
     this.setState({ counters });
   };  
   render() {
+    console.log('App - MOUNT - render()');
     return (
       <div className="App">
         <Navbar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
