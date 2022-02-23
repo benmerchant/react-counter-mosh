@@ -17,16 +17,16 @@ class App extends Component {
     ],
   };
 
-  constructor() {
-    super();
-    console.log('App - MOUNT - constructor()');
-  }
+  // constructor() {
+  //   super();
+  //   console.log('App - MOUNT - constructor()');
+  // }
 
-  componentDidMount() {
-    console.log('App - MOUNT - componentDidMount()');
-    // AJAX call
-    // this.setState({ data })
-  }
+  // componentDidMount() {
+  //   console.log('App - MOUNT - componentDidMount()');
+  //   // AJAX call
+  //   // this.setState({ data })
+  // }
 
   handleReset = () => {
     const counters = this.state.counters.map((c) => {
@@ -36,20 +36,28 @@ class App extends Component {
     this.setState({ counters });
   };
 
-  handleDelete = (counterId) => {
+  handleDelete = counterId => {
     const counters = this.state.counters.filter((c) => c.id !== counterId);
     this.setState({ counters });
   };
 
-  handleIncrement = (counter) => {
+  handleIncrement = counter => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
     counters[index] = { ...counter };
     counters[index].value++;
     this.setState({ counters });
-  };  
+  };
+
+  handleAdd = () => {
+    const counters = [...this.state.counters]; 
+    const newCounterId = counters.length + 1;
+    const newCounter = { id: newCounterId, value: 0 };
+    counters.push(newCounter);
+    this.setState({ counters })
+  }
   render() {
-    console.log('App - MOUNT - render()');
+    // console.log('App - MOUNT - render()');
     return (
       <div className="App">
         <Navbar totalCounters={this.state.counters.filter(c => c.value > 0).length} />
@@ -59,6 +67,7 @@ class App extends Component {
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
+            onAdd = {this.handleAdd}
           />
         </main>
       </div>

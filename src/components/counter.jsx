@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-  componentDidUpdate(prevProps, prevState) {
-    console.log('counter - UPDATE - componentDidUpdate');
-    // console.log('prevProps', prevProps);
-    // console.log('prevState', prevState);
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('counter - UPDATE - componentDidUpdate');
+  //   // console.log('prevProps', prevProps);
+  //   // console.log('prevState', prevState);
+  // }
 
-  componentWillUnmount() {
-    console.log('counter - UNMOUNT - componentwillUnmount');
-  }
+  // componentWillUnmount() {
+  //   console.log('counter - UNMOUNT - componentwillUnmount');
+  // }
 
   render() {
-    console.log('counter - MOUNT - render()');
+    // console.log('counter - MOUNT - render()');
 
     return (
       <div>
